@@ -1,21 +1,30 @@
 class Solution {
     public int minimumSumSubarray(List<Integer> nums, int l, int r) {
+        int n = nums.size();
         int minSum = Integer.MAX_VALUE;
-        for (int start = l; start <= r; start++) {
-            int sum = 0;
-            for (int i = 0; i < start && i < nums.size(); i++) {
-                sum += nums.get(i);
+
+        // check all window lengths from l to r
+        for (int len = l; len <= r; len++) {
+            if (len > n) break; // skip if length bigger than array
+
+            int windowSum = 0;
+            // first window of size len
+            for (int i = 0; i < len; i++) {
+                windowSum += nums.get(i);
             }
-            if (sum > 0) {
-                minSum = Math.min(minSum, sum);
+            if (windowSum > 0) {
+                minSum = Math.min(minSum, windowSum);
             }
-            for (int end = start; end < nums.size(); end++) {
-                sum += nums.get(end) - nums.get(end - start);
-                if (sum > 0) {
-                    minSum = Math.min(minSum, sum);
+
+            // slide the window
+            for (int i = len; i < n; i++) {
+                windowSum += nums.get(i) - nums.get(i - len);
+                if (windowSum > 0) {
+                    minSum = Math.min(minSum, windowSum);
                 }
             }
         }
-        return minSum == Integer.MAX_VALUE ? -1 : minSum;
+
+        return (minSum == Integer.MAX_VALUE) ? -1 : minSum;
     }
 }
