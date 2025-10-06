@@ -6,7 +6,7 @@ class Solution {
             if (c == '(') {
                 if (depth > 0) sb.append(c);
                 depth++;
-            } else { // c == ')'
+            } else { 
                 depth--;
                 if (depth > 0) sb.append(c);
             }
