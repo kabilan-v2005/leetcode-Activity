@@ -12,7 +12,7 @@
 class Solution {
     public ListNode insertGreatestCommonDivisors(ListNode head) {
         // Edge case: if list has only one node, no insertion needed
-        if (head == null || head.next == null) return head;
+        
 
         ListNode curr = head;
 
