@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode insertGreatestCommonDivisors(ListNode head) {
-        LinkedList<Integer> list=new LinkedList<>();
+        
         ListNode temp=head;
         while(temp!=null && temp.next!=null){
             
