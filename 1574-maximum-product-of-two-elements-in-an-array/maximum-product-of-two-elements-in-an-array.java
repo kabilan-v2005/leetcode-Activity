@@ -2,7 +2,7 @@ class Solution {
     public int maxProduct(int[] nums) {
         PriorityQueue<Integer> q=new PriorityQueue<>(Comparator.reverseOrder());
         for(int i:nums){
-            q.add(i);
+            q.offer(i);
         }
         int a=q.poll();
         int b=q.poll();
