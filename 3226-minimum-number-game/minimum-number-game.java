@@ -9,8 +9,8 @@ class Solution {
         int i = 0;
 
         while (!pq.isEmpty()) {
-            int a = pq.poll(); // smallest
-            int b = pq.poll(); // next smallest
+            int a = pq.poll();
+            int b = pq.poll(); 
             arr[i++] = b;
             arr[i++] = a;
         }
