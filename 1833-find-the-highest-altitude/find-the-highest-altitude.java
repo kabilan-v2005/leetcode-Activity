@@ -7,9 +7,7 @@ class Solution {
 
         for(int i=1;i<=gain.length;i++){
             result[i]=gain[i-1]+result[i-1];
-            if(result[i]>max){
-                max=result[i];
-            }
+            max=Math.max(max,result[i]);
         }
         return max;
         
