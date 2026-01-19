@@ -1,16 +1,14 @@
 class Solution {
     public int[] getSneakyNumbers(int[] nums) {
-        Set<Integer> set=new HashSet<>();
-        int arr[]=new int[2];
-        int j=0;
-        for(int i=0;i<nums.length;i++){
-            
-            
-            if(!set.add(nums[i])){
-                arr[j]=nums[i];
-                j++;
+        HashSet<Integer> seen = new HashSet<>();
+        int[] result = new int[2];
+        int idx = 0;
+
+        for (int num : nums) {
+            if (!seen.add(num)) {   // duplicate found
+                result[idx++] = num;
             }
         }
-        return arr;
+        return result;
     }
 }
