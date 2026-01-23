@@ -5,7 +5,7 @@ class Solution {
             return head;
         }
 
-        // 🔹 Find length
+        
         int len = 0;
         ListNode temp = head;
         while (temp != null) {
