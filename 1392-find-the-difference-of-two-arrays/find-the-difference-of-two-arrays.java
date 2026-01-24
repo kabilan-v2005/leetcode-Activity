@@ -1,36 +1,37 @@
+import java.util.*;
+
 class Solution {
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        Set<Integer> innerlist1=new HashSet<>();
-        Set<Integer> innerlist2=new HashSet<>();
 
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
+            Set<Integer> set1 = new HashSet<>();
+                    Set<Integer> set2 = new HashSet<>();
 
+                            // Build sets (O(n + m))
+                                    for (int n : nums1) set1.add(n);
+                                            for (int n : nums2) set2.add(n);
 
-        
-        for(int i:nums1)
-            innerlist1.add(i);
-        for(int i:nums2)
-            innerlist2.add(i);
+                                                    List<Integer> diff1 = new ArrayList<>();
+                                                            List<Integer> diff2 = new ArrayList<>();
 
-        for(int i:innerlist1){
-            if(!innerlist2.contains(i)){
-                list1.add(i);
-            }
-        }
-        for(int i:innerlist2){
-            if(!innerlist1.contains(i)){
-                list2.add(i);
-            }
-        }                                    
-            
-            
-        
-        List<List<Integer>> mainlist=new ArrayList<>();
-        mainlist.add(list1);
-        mainlist.add(list2);
+                                                                    // nums1 - nums2
+                                                                            for (int n : set1) {
+                                                                                        if (!set2.contains(n)) {
+                                                                                                        diff1.add(n);
+                                                                                                                    }
+                                                                                                                            }
 
-        return mainlist;
+                                                                                                                                    // nums2 - nums1
+                                                                                                                                            for (int n : set2) {
+                                                                                                                                                        if (!set1.contains(n)) {
+                                                                                                                                                                        diff2.add(n);
+                                                                                                                                                                                    }
+                                                                                                                                                                                            }
 
-    }
-}
+                                                                                                                                                                                                    List<List<Integer>> result = new ArrayList<>();
+                                                                                                                                                                                                            result.add(diff1);
+                                                                                                                                                                                                                    result.add(diff2);
+
+                                                                                                                                                                                                                            return result;
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                
