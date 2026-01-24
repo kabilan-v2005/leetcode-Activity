@@ -1,32 +1,28 @@
-import java.util.*;
-
 class Solution {
     public int[] findIntersectionValues(int[] nums1, int[] nums2) {
+        
+        int count1=0;
+        
+        
+        for(int i=0;i<nums1.length;i++){
+            for(int j=0;j<nums2.length;j++){
+                if(nums1[i]==nums2[j]){
+                    count1++;
+                    break;
+                }
+            }
+        }
+        int count2=0;
+        for(int i=0;i<nums2.length;i++){
+            for(int j=0;j<nums1.length;j++){
+                if(nums2[i]==nums1[j]){
+                    count2++;
+                    break;
+                }
+            }
+        }   
+        
 
-            Set<Integer> set1 = new HashSet<>();
-                    Set<Integer> set2 = new HashSet<>();
-
-                            for (int n : nums1) set1.add(n);
-                                    for (int n : nums2) set2.add(n);
-
-                                            int count1 = 0;
-                                                    int count2 = 0;
-
-                                                            // count elements of nums1 present in nums2
-                                                                    for (int n : nums1) {
-                                                                                if (set2.contains(n)) {
-                                                                                                count1++;
-                                                                                                            }
-                                                                                                                    }
-
-                                                                                                                            // count elements of nums2 present in nums1
-                                                                                                                                    for (int n : nums2) {
-                                                                                                                                                if (set1.contains(n)) {
-                                                                                                                                                                count2++;
-                                                                                                                                                                            }
-                                                                                                                                                                                    }
-
-                                                                                                                                                                                            return new int[]{count1, count2};
-                                                                                                                                                                                                }
-                                                                                                                                                                                                }
-                                                                                                                                                                                                
+        return new int[]{count1, count2};
+        }
+    }
