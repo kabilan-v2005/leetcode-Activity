@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode removeNodes(ListNode head) {
-        head=reverse(head); // note this make the key change(reverseing)
+        head=reverse(head); 
         ListNode dummy=new ListNode(0);
         dummy.next=head;
         ListNode prev=dummy;
