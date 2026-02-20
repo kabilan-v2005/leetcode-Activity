@@ -1,7 +1,6 @@
 class Solution {
     public String clearDigits(String s) {
         Stack<Character> stack=new Stack<>();
-        int c=0;
         for(char i:s.toCharArray()){
             if(Character.isDigit(i)){
                 if(!stack.isEmpty()){
@@ -10,7 +9,7 @@ class Solution {
             }
             else{
                 stack.push(i);
-                c++;
+                
             }
         }
         StringBuilder str=new StringBuilder();
