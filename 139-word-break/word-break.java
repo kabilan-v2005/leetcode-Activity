@@ -3,20 +3,20 @@ class Solution {
 
         Set<String> set = new HashSet<>(wordDict);
 
-        boolean[] memo = new boolean[s.length() + 1];
-        memo[0] = true; 
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true; 
 
         for (int i = 1; i <= s.length(); i++) {
 
             for (int j = 0; j < i; j++) {
 
-                if (memo[j] && set.contains(s.substring(j, i))) {
-                    memo[i] = true;
+                if (dp[j] && set.contains(s.substring(j, i))) {
+                    dp[i] = true;
                     break; 
                 }
             }
         }
 
-        return memo[s.length()];
+        return dp[s.length()];
     }
 }
