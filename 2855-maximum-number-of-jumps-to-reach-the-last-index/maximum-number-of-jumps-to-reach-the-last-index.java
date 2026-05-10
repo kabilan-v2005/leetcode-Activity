@@ -9,7 +9,8 @@ class Solution {
         for(int i=0;i<n;i++){
             if(dp[i] == -1) continue;
             for(int j=i+1;j<n;j++){
-                if(Math.abs(nums[i] - nums[j]) <= target){
+                long diff = 1L * nums[j] - nums[i];
+                if(-target <= diff && diff <= target){
                     dp[j]= Math.max(dp[j], dp[i]+1);
                 }
             }
