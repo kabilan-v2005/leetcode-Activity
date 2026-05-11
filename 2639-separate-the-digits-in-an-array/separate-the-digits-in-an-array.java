@@ -1,16 +1,26 @@
 class Solution {
     public int[] separateDigits(int[] nums) {
 
-        StringBuilder str = new StringBuilder();
+        List<Integer> list = new ArrayList<>();
 
         for (int num : nums) {
-            str.append(num);
+
+            List<Integer> temp = new ArrayList<>();
+
+            while (num > 0) {
+                temp.add(num % 10);
+                num /= 10;
+            }
+
+            for (int i = temp.size() - 1; i >= 0; i--) {
+                list.add(temp.get(i));
+            }
         }
 
-        int[] res = new int[str.length()];
+        int[] res = new int[list.size()];
 
-        for (int i = 0; i < str.length(); i++) {
-            res[i] = str.charAt(i) - '0';
+        for (int i = 0; i < list.size(); i++) {
+            res[i] = list.get(i);
         }
 
         return res;
