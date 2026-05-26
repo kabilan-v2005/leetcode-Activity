@@ -1,20 +1,26 @@
 class Solution {
     public int numberOfSpecialChars(String word) {
-        Set<Character> set1 = new HashSet<>();
-        Set<Character> set2 = new HashSet<>();
+        boolean[] lower = new boolean[26];
+        boolean[] upper = new boolean[26];
 
-        int count = 0;
-        for(int i = 0;i < word.length();i++){
-            if(Character.isLowerCase(word.charAt(i))){
-                set1.add(Character.toUpperCase(word.charAt(i)));
+        for (char ch : word.toCharArray()) {
+            // lowercase
+            if (Character.isLowerCase(ch)) {
+                lower[ch - 'a'] = true;
             }
-            else{
-                set2.add(word.charAt(i));
+            // uppercase
+            else {
+                upper[ch - 'A'] = true;
             }
         }
+        
+        int count = 0;
+        // Check both exist
+        for (int i = 0; i < 26; i++) {
 
-        for(Character c : set2){
-            if(set1.contains(c)) count++;
+            if (lower[i] && upper[i]) {
+                count++;
+            }
         }
 
         return count;
