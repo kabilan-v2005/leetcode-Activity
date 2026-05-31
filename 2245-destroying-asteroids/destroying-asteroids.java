@@ -3,6 +3,7 @@ class Solution {
         Arrays.sort(asteroids);
 
         long curmass = mass;
+        
         for(int i = 0;i < asteroids.length;i++){
             if(curmass >= asteroids[i]){
                 curmass += asteroids[i];
