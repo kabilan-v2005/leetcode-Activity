@@ -12,7 +12,6 @@ class Solution {
     public int[] kWeakestRows(int[][] mat, int k) {
         int m = mat.length;
         int arr[][] = new int[m][2];
-        // int flag = 0;
 
         for(int i = 0;i < m;i++){
             // int count = 0;
@@ -30,9 +29,13 @@ class Solution {
             arr[i][1] = i; 
         }
         Arrays.sort(arr, (a, b) -> {
+            // If soldier counts are equal,
+            // sort by row index (smaller index first)
             if (a[0] == b[0]) {
                 return a[1] - b[1];
             }
+            // Otherwise sort by soldier count
+            // (fewer soldiers = weaker row)
             return a[0] - b[0];
         });
         int ans[] = new int[k];
