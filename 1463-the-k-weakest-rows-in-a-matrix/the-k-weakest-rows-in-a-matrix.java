@@ -2,12 +2,16 @@ class Solution {
     public int[] kWeakestRows(int[][] mat, int k) {
         int m = mat.length;
         int arr[][] = new int[m][2];
+        // int flag = 0;
 
         for(int i = 0;i < m;i++){
             int count = 0;
             int n = mat[i].length;
             for(int j = 0;j < n;j++){
-                if(mat[i][j] == 1){
+                if(mat[i][j] == 0){
+                    break;
+                }
+                else{
                     count++;
                 }
             }
