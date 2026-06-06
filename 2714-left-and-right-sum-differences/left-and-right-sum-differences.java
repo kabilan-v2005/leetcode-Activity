@@ -3,8 +3,8 @@ class Solution {
         int n = nums.length;
         // int left[] = new int[n];
         // int right[] = new int[n];
-        int leftsum = 0;
-        int rightsum = 0;
+        int leftSum = 0;
+        int rightSum = 0;
         // left[0] = leftsum;
         // right[n - 1] = rightsum;
 
@@ -17,15 +17,14 @@ class Solution {
         //     rightsum += nums[i+1];
         //     right[i] = rightsum;
         // }
-        int result[] = new int[n];
-        for(int num : nums) rightsum += num;
-        for(int i = 0;i < n;i++){
+        for(int num : nums) rightSum += num;
+        for(int i = 0; i < n; i++) {
             int val = nums[i];
-            rightsum -= val;
-            result[i] = Math.abs(leftsum - rightsum);
-            leftsum += val;
+            rightSum -= val;
+            nums[i] = Math.abs(leftSum - rightSum);
+            leftSum += val;
         }
-        return result;
+        return nums; 
         
     }
 }
