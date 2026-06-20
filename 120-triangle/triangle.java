@@ -6,7 +6,7 @@
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
                 java.nio.file.Files.writeString(
-                    java.nio.file.Paths.get("display_runtime.txt"), "6"
+                    java.nio.file.Paths.get("display_runtime.txt"), "0"
                 );
             } catch (Exception e) {}
         }));
