@@ -1,29 +1,43 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-
-        if (head == null || head.next == null) return head;
-        ListNode odd=head;
-        ListNode even=head.next;
-        ListNode evenhead=even;
-
-        while(even!=null && even.next!=null){
-            odd.next=odd.next.next;
-            odd=odd.next;
-
-            even.next=even.next.next;
-            even=even.next;
+        // FIX: Handle the empty list edge case to prevent NullPointerException
+        if (head == null) {
+            return null;
         }
-        odd.next=evenhead;
+
+        ListNode oddHead = null, oddTail = null;
+        ListNode evenHead = null, evenTail = null;
+
+        ListNode current = head;
+        int count = 1;
+
+        while (current != null) {
+            ListNode nextNode = current.next;
+            current.next = null; // Severing the link
+
+            if (count % 2 == 1) { // odd position
+                if (oddHead == null) {
+                    oddHead = oddTail = current;
+                } else {
+                    oddTail.next = current;
+                    oddTail = current;
+                }
+            } else { // even position
+                if (evenHead == null) {
+                    evenHead = evenTail = current;
+                } else {
+                    evenTail.next = current;
+                    evenTail = current;
+                }
+            }
+
+            current = nextNode;
+            count++;
+        }
+
+        // Now oddTail is guaranteed not to be null
+        oddTail.next = evenHead;
+        head = oddHead;
 
         return head;
     }
