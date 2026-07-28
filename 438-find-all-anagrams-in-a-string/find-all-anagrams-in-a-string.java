@@ -5,22 +5,23 @@ class Solution {
         for(char c:p.toCharArray()){
             freq[c - 'a']++;
         }
-
-        for(int right = 0;right <= s.length() - p.length();right++){
-            int temp[] = freq.clone();
+        int count = p.length();
+        int left = 0;
+        for(int right = 0;right < s.length();right++){
+            // int temp[] = freq.clone();
             // int j = 0;
-            boolean b = true;
-            for(int j = 0;j < p.length();j++){
-                char c = s.charAt(right + j);
-                temp[c - 'a']--;
-                if(temp[c - 'a'] < 0){
-                    b = false;
-                    break;
-                }
-                // left++;
-                // j++;
+            char c = s.charAt(right);
+            // boolean b = true;
+            if(freq[c - 'a'] > 0) count--;
+            freq[c - 'a']--;
+            if(right - left + 1 > p.length()){
+                if(freq[s.charAt(left) - 'a'] >= 0) count++;
+                freq[s.charAt(left) - 'a']++;
+                left++;
             }
-            if(b) list.add(right);
+            if(count == 0) list.add(left);
+
+            
 
         }
         return list;
