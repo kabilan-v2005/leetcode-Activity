@@ -9,15 +9,24 @@ class Solution {
         }
         List<Integer> list = new ArrayList<>();
         
-        Set<Integer> set = new HashSet<>();
+        // Set<Integer> set = new HashSet<>();
         
-        for(int i = 0;i <nums.length;i++){
-            set.add(nums[i]);
+        // for(int i = 0;i <nums.length;i++){
+        //     set.add(nums[i]);
+        // }
+        // for(int i = min;i <= max;i++){
+        //     if(!set.contains(i)){
+        //         list.add(i);
+        //     }
+        // }
+        int[] arr = new int[max + 1];
+        for(int i : nums){
+            arr[i]++;
         }
-        for(int i = min;i <= max;i++){
-            if(!set.contains(i)){
+
+        for(int i=min;i<max;i++){
+            if(arr[i] == 0)
                 list.add(i);
-            }
         }
         return list;
     }
