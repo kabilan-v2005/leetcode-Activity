@@ -1,9 +1,8 @@
-# Write your MySQL query statement below
-SELECT MAX(num) AS num
-FROM (
-    SELECT num
-    FROM MyNumbers
-    GROUP BY num
-    HAVING COUNT(*) = 1
-) AS t
-
+# Write your MySQL query statement belo
+select max(num) as num
+from(
+    select num
+    from MyNumbers
+    group by num
+    Having count(num) <= 1
+) as t
