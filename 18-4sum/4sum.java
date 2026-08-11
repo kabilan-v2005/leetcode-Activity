@@ -13,7 +13,7 @@ class Solution {
                 int r = nums.length - 1;
 
                 while(l < r){
-                    List<Integer> list = new ArrayList<>();
+                    List<Integer> list = new LinkedList<>();
                     long sum = (long) nums[i] + nums[j] + nums[l] + nums[r];
                     // boolean b = false;
                     if(sum == target){
