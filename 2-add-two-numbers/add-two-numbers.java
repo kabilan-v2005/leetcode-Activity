@@ -1,58 +1,34 @@
-import java.math.BigInteger;
-
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+        int carry = 0;
+        while(l1 != null || l2 != null || carry != 0){
+            int x = (l1 != null) ? l1.val : 0;
+            int y = (l2 != null) ?  l2.val : 0;
 
-        // Convert l1 to a number
-        StringBuilder s = new StringBuilder();
-        ListNode temp = l1;
+            int sum  = x + y + carry;
 
-        while (temp != null) {
-            s.append(temp.val);
-            temp = temp.next;
+            carry = sum / 10;
+
+            int d = sum % 10;
+
+            curr.next = new ListNode(d);
+            curr = curr.next;
+
+            if(l1 != null) l1=l1.next;
+            if(l2 != null) l2=l2.next;
         }
-
-        s.reverse();
-
-        BigInteger num1 = new BigInteger(s.toString());
-
-        // Convert l2 to a number
-        StringBuilder ss = new StringBuilder();
-        ListNode temp2 = l2;
-
-        while (temp2 != null) {
-            ss.append(temp2.val);
-            temp2 = temp2.next;
-        }
-
-        ss.reverse();
-
-        BigInteger num2 = new BigInteger(ss.toString());
-
-        // Add the two numbers
-        BigInteger sum = num1.add(num2);
-
-        // Put result back into linked list
-        String result = sum.toString();
-
-        ListNode curr = l1;
-        ListNode prev = null;
-
-        // Result needs to be stored in reverse order
-        for (int i = result.length() - 1; i >= 0; i--) {
-
-            int digit = result.charAt(i) - '0';
-
-            if (curr != null) {
-                curr.val = digit;
-                prev = curr;
-                curr = curr.next;
-            } else {
-                prev.next = new ListNode(digit);
-                prev = prev.next;
-            }
-        }
-
-        return l1;
+        return dummy.next;
     }
 }
