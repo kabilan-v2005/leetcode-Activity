@@ -8,7 +8,7 @@ class Solution {
 
         while(l < r){
             if(height[l] < height[r]){
-                if(lmax < height[l]){
+                if(height[l] >= lmax){
                     lmax = height[l];
                 }
                 else{
@@ -17,7 +17,7 @@ class Solution {
                 l++;
             }
             else{
-                if(rmax < height[r]){
+                if(height[r] >= rmax){
                     rmax = height[r];
                 }
                 else{
