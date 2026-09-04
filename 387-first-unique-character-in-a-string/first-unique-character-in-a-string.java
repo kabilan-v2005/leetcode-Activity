@@ -1,12 +1,15 @@
 class Solution {
     public int firstUniqChar(String s) {
-        Map<Character,Integer> map=new HashMap<>();
-        for(Character c:s.toCharArray()){
-            map.put(c,map.getOrDefault(c, 0)+1);
-        }
-        for(int i=0;i<s.length();i++){
-            if(map.get(s.charAt(i))==1) return i;
-            
+        // int i=0;
+        for(int i = 0;i < s.length();i++){
+            boolean b = true;
+            for(int j=0;j < s.length();j++){
+                if(i != j && s.charAt(i) == s.charAt(j)){
+                    b = false;
+                    break;
+                }
+            }
+            if(b) return i;
         }
         return -1;
     }
